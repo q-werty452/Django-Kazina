@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+{% load i18n static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Казына — Вход в систему</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚜️</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --emerald:      #023E2A;
+            --emerald-dark: #012217;
+            --gold:         #D4AF37;
+            --gold-light:   #F3E5AB;
+            --beige:        #F5F5DC;
+            --font-title:   'Cormorant Garamond', serif;
+            --font-text:    'Montserrat', sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: var(--font-text);
+            background: var(--emerald-dark);
+            color: var(--beige);
+            overflow: hidden;
+        }
+
+        /* ---- ФОН ---- */
+        .bg-layer {
+            position: fixed;
+            inset: 0;
+            background:
+                linear-gradient(rgba(1,34,23,0.75), rgba(1,34,23,0.88)),
+                url('https://images.unsplash.com/photo-1544025162-8111149f12d5?w=1920&q=80') center/cover;
+            z-index: 0;
+        }
+
+        /* ---- ПЛАВАЮЩИЕ УЗОРЫ ---- */
+        .patterns {
+            position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden;
+        }
+        .pat {
+            position: absolute;
+            font-size: 120px;
+            color: rgba(212, 175, 55, 0.06);
+            animation: floatPat ease-in-out infinite alternate;
+            font-family: serif;
+        }
+        .pat:nth-child(1) { top: 5%;  left: 3%;  font-size: 160px; animation-duration: 14s; }
+        .pat:nth-child(2) { top: 60%; left: 75%; font-size: 100px; animation-duration: 18s; animation-delay: -5s; }
+        .pat:nth-child(3) { top: 30%; left: 55%; font-size: 200px; animation-duration: 22s; animation-delay: -10s; opacity: 0.5; }
+        .pat:nth-child(4) { top: 75%; left: 15%; font-size: 140px; animation-duration: 16s; animation-delay: -3s; }
+
+        @keyframes floatPat {
+            0%   { transform: translateY(0)    rotate(-10deg); }
+            100% { transform: translateY(-50px) rotate(5deg);  }
+        }
+
+        /* ---- ФОРМА ---- */
+        .wrap {
+            position: relative;
+            z-index: 10;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-logo {
+            font-family: var(--font-title);
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: 8px;
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(212,175,55,0.4);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .login-sub {
+            font-size: 11px;
+            letter-spacing: 5px;
+            color: rgba(245,245,220,0.45);
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            font-family: var(--font-text);
+        }
+
+        .login-box {
+            width: 420px;
+            padding: 44px 48px;
+            background: rgba(1, 34, 23, 0.75);
+            border: 1px solid rgba(212,175,55,0.4);
+            box-shadow:
+                0 0 0 1px rgba(212,175,55,0.08),
+                0 0 40px rgba(212,175,55,0.12),
+                0 20px 60px rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            position: relative;
+        }
+
+        /* Золотые уголки */
+        .login-box::before, .login-box::after {
+            content: '⚜';
+            position: absolute;
+            color: var(--gold);
+            font-size: 18px;
+            opacity: 0.5;
+        }
+        .login-box::before { top: 10px;  left: 14px; }
+        .login-box::after  { bottom: 10px; right: 14px; transform: rotate(180deg); }
+
+        .box-title {
+            font-family: var(--font-title);
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+
+        .errorlist {
+            background: rgba(180, 30, 30, 0.15);
+            border: 1px solid rgba(200,60,60,0.4);
+            border-left: 3px solid #c03030;
+            padding: 10px 14px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            color: #f0c0c0;
+            list-style: none;
+            font-family: var(--font-text);
+        }
+
+        .field-row {
+            margin-bottom: 22px;
+        }
+
+        .field-row label {
+            display: block;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(245,245,220,0.5);
+            margin-bottom: 8px;
+            font-family: var(--font-text);
+        }
+
+        .field-row input {
+            width: 100%;
+            background: rgba(255,255,255,0.04);
+            border: none;
+            border-bottom: 1px solid rgba(212,175,55,0.35);
+            color: var(--beige);
+            font-family: var(--font-text);
+            font-size: 14px;
+            padding: 10px 4px;
+            outline: none;
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .field-row input:focus {
+            border-bottom-color: var(--gold);
+            background: rgba(212,175,55,0.04);
+        }
+
+        .field-row input::placeholder {
+            color: rgba(245,245,220,0.2);
+        }
+
+        .login-btn {
+            width: 100%;
+            margin-top: 8px;
+            padding: 13px;
+            font-family: var(--font-text);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s ease;
+            z-index: 0;
+        }
+
+        .login-btn:hover::before { transform: scaleX(1); }
+        .login-btn:hover { color: var(--emerald-dark); }
+        .login-btn span { position: relative; z-index: 1; }
+
+        .login-footer {
+            margin-top: 32px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: rgba(245,245,220,0.15);
+            font-family: var(--font-text);
+        }
+
+        /* Декор по углам экрана */
+        .corner { position: fixed; width: 50px; height: 50px; border-color: rgba(212,175,55,0.25); border-style: solid; z-index: 5; }
+        .c-tl { top: 20px; left: 20px;  border-width: 1px 0 0 1px; }
+        .c-tr { top: 20px; right: 20px; border-width: 1px 1px 0 0; }
+        .c-bl { bottom: 20px; left: 20px;  border-width: 0 0 1px 1px; }
+        .c-br { bottom: 20px; right: 20px; border-width: 0 1px 1px 0; }
+
+        @media (max-width: 480px) {
+            .login-box { width: 92vw; padding: 30px 24px; }
+            .login-logo { font-size: 38px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-layer"></div>
+<div class="patterns">
+    <div class="pat">❖</div>
+    <div class="pat">♨</div>
+    <div class="pat">✤</div>
+    <div class="pat">⚜</div>
+</div>
+
+<div class="corner c-tl"></div>
+<div class="corner c-tr"></div>
+<div class="corner c-bl"></div>
+<div class="corner c-br"></div>
+
+<div class="wrap">
+    <div class="login-logo">КАЗЫНА</div>
+    <p class="login-sub">// система управления рестораном</p>
+
+    <div class="login-box">
+        <p class="box-title">Вход в систему</p>
+
+        {% if form.errors %}
+        <ul class="errorlist">
+            <li>Неверный логин или пароль. Попробуйте снова.</li>
+        </ul>
+        {% endif %}
+
+        <form method="post" action="{{ request.path }}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}">
+
+            <div class="field-row">
+                <label for="id_username">Логин</label>
+                <input type="text" id="id_username" name="username"
+                       value="{{ form.username.value|default:'' }}"
+                       placeholder="Введите логин" autofocus autocomplete="username">
+            </div>
+
+            <div class="field-row">
+                <label for="id_password">Пароль</label>
+                <input type="password" id="id_password" name="password"
+                       placeholder="••••••••" autocomplete="current-password">
+            </div>
+
+            <button type="submit" class="login-btn"><span>Войти</span></button>
+        </form>
+    </div>
+
+    <p class="login-footer">© 2026 Ресторан «Казына» — Панель управления</p>
+</div>
+
+</body>
+</html>

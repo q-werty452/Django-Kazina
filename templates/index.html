@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Казына — Сокровище вкуса</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚜️</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+
+<div class="preloader">
+    <div class="tunduk">
+        <div class="cross"></div>
+        <div class="cross"></div>
+    </div>
+</div>
+
+<div class="floating-patterns">
+    <div class="pattern">♨</div>
+    <div class="pattern">❖</div>
+    <div class="pattern">✤</div>
+    <div class="pattern">✥</div>
+</div>
+
+<header class="main-header">
+    <a href="#" class="logo">КАЗЫНА</a>
+
+    <nav class="desktop-menu">
+        <a href="#home">Главная</a>
+        <a href="#about">О нас</a>
+        <a href="#menu">Меню</a>
+        <a href="#atmosphere">Атмосфера</a>
+        <a href="#contacts">Контакты</a>
+        <a href="{{ site.instagram_url|default:'https://www.instagram.com/kazyna_manas?igsh=MWE5bHZtOWJ4Y3FsYg%3D%3D' }}">Инстаграм</a>
+    </nav>
+
+    <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+
+    <div class="header-right-section">
+
+        <div class="desktop-contacts">
+            <span class="phone">{{ site.phone|default:"+996 555 123 456" }}</span>
+            <span class="lang">KG | RU | EN</span>
+        </div>
+
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+
+        <div class="header-controls">
+            <div class="header-actions">
+                <button class="cart-toggle-btn" id="cartOpenBtn">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+            </div>
+
+            <label for="menu-toggle" class="hamburger">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </label>
+        </div>
+
+    </div>
+
+    <div class="mobile-overlay">
+        <nav class="mobile-nav">
+            <a href="#home">Главная</a>
+            <a href="#about">О нас</a>
+            <a href="#menu">Меню</a>
+            <a href="#atmosphere">Атмосфера</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+        <div class="mobile-contacts">
+            <p>📞 {{ site.phone|default:"+996 555 123 456" }}</p>
+            <p class="mobile-lang">KG | RU | EN</p>
+        </div>
+    </div>
+</header>
+
+
+<section class="hero" id="home">
+    <h1>Сокровище вкуса<br>и истинных традиций</h1>
+    <p>Гостеприимство предков в современной атмосфере</p>
+    <div>
+        <a href="#" class="btn">Забронировать стол</a>
+    </div>
+</section>
+
+<section class="about">
+    <div class="about-img"></div>
+    <div class="about-text">
+        <h2>Философия Казыны</h2>
+        <p>{{ site.about_text|default:"Мы не просто готовим еду. Мы воссоздаем историю. Каждый рецепт — это наследие кочевников, приготовленное из свежайших продуктов. Наши блюда пахнут дымком, степным ветром и настоящим домашним уютом. Погрузитесь в атмосферу благородного кийиза и темного дерева." }}</p>
+    </div>
+</section>
+
+
+<section class="halls-section">
+
+    <div class="halls-video-bg">
+        <video class="bg-vid vid-default" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80">
+            <source src="" type="video/mp4">
+        </video>
+
+        <video class="bg-vid vid-hall" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80">
+            <source src="" type="video/mp4">
+        </video>
+
+        <video class="bg-vid vid-vip" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80">
+            <source src="" type="video/mp4">
+        </video>
+
+        <video class="bg-vid vid-veranda" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80">
+            <source src="" type="video/mp4">
+        </video>
+
+        <div class="vid-overlay"></div>
+    </div>
+
+    <div class="halls-content-wrapper">
+        <h2 class="specials-title"><span>❖</span> Атмосфера и Залы <span>❖</span></h2>
+        <p class="halls-subtitle">Выберите идеальное место для вашего отдыха</p>
+
+        <div class="halls-container">
+            {% if halls %}
+                {% for hall in halls %}
+                <div class="hall-item hall-item-{{ forloop.counter }}">
+                    <div class="hall-item-image" style="background-image: url('{{ hall.image.url }}');"></div>
+                    <div class="hall-info">
+                        <h3>{{ hall.name }}</h3>
+                        <p class="hall-desc">{{ hall.description }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+            <div class="hall-item hall-item-1">
+                <div class="hall-item-image" style="background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="hall-info">
+                    <h3>Общий Зал</h3>
+                    <p class="hall-desc">Просторный и светлый зал с национальной росписью, идеален для теплых встреч.</p>
+                </div>
+            </div>
+
+            <div class="hall-item hall-item-2">
+                <div class="hall-item-image" style="background-image: url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="hall-info">
+                    <h3>VIP Кабинки</h3>
+                    <p class="hall-desc">Уединенные зоны, стилизованные под ханские шатры. Полная приватность.</p>
+                </div>
+            </div>
+
+            <div class="hall-item hall-item-3">
+                <div class="hall-item-image" style="background-image: url('https://images.unsplash.com/photo-1525610553991-2bede1a236e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="hall-info">
+                    <h3>Летняя Веранда</h3>
+                    <p class="hall-desc">Свежий воздух, обилие зелени и журчание воды.</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="hero-slider">
+    {% if slides %}
+        {% for slide in slides %}
+        <div class="hero-slide {% if forloop.first %}active{% endif %}" style="background-image: linear-gradient(rgba(1, 34, 23, 0.6), rgba(1, 34, 23, 0.8)), url('{{ slide.image.url }}');">
+            <div class="hero-content">
+                <h1>{{ slide.title }}</h1>
+                <p>{{ slide.subtitle }}</p>
+                <a href="{{ slide.btn_link }}" class="btn">{{ slide.btn_text }}</a>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+    <div class="hero-slide active" style="background-image: linear-gradient(rgba(1, 34, 23, 0.6), rgba(1, 34, 23, 0.8)), url('https://images.unsplash.com/photo-1544025162-8111149f12d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+        <div class="hero-content">
+            <h1>Сокровище вкуса<br>и истинных традиций</h1>
+            <p>Гостеприимство предков в современной атмосфере</p>
+            <a href="#menu" class="btn">Смотреть меню</a>
+        </div>
+    </div>
+
+    <div class="hero-slide" style="background-image: linear-gradient(rgba(1, 34, 23, 0.6), rgba(1, 34, 23, 0.8)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+        <div class="hero-content">
+            <h1>Атмосфера<br>Ханского Шатра</h1>
+            <p>Уникальный этнический дизайн и живая музыка</p>
+            <a href="#atmosphere" class="btn">Посмотреть залы</a>
+        </div>
+    </div>
+
+    <div class="hero-slide" style="background-image: linear-gradient(rgba(1, 34, 23, 0.6), rgba(1, 34, 23, 0.8)), url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+        <div class="hero-content">
+            <h1>Идеальное место<br>для ваших Тоев</h1>
+            <p>Проведем ваш праздник на высшем уровне</p>
+            <a href="#contacts" class="btn">Забронировать дату</a>
+        </div>
+    </div>
+    {% endif %}
+
+    <button class="hero-arrow hero-prev">❮</button>
+    <button class="hero-arrow hero-next">❯</button>
+
+    <div class="hero-dots">
+        {% if slides %}
+            {% for slide in slides %}
+            <span class="dot {% if forloop.first %}active{% endif %}"></span>
+            {% endfor %}
+        {% else %}
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        {% endif %}
+    </div>
+</section>
+
+<section class="menu-section" id="menu">
+    <h2 class="specials-title"><span>❖</span> Наше меню<span>❖</span></h2>
+
+    {% if categories %}
+        {% for category in categories %}
+        <input type="radio" id="tab{{ forloop.counter }}" name="menu-tab" {% if forloop.first %}checked{% endif %}>
+        {% endfor %}
+    {% else %}
+    <input type="radio" id="tab1" name="menu-tab" checked>
+    <input type="radio" id="tab2" name="menu-tab">
+    <input type="radio" id="tab3" name="menu-tab">
+    <input type="radio" id="tab4" name="menu-tab">
+    <input type="radio" id="tab5" name="menu-tab">
+    <input type="radio" id="tab6" name="menu-tab">
+    <input type="radio" id="tab7" name="menu-tab">
+    <input type="radio" id="tab8" name="menu-tab">
+    <input type="radio" id="tab9" name="menu-tab">
+    <input type="radio" id="tab10" name="menu-tab">
+    <input type="radio" id="tab11" name="menu-tab">
+    <input type="radio" id="tab12" name="menu-tab">
+    <input type="radio" id="tab13" name="menu-tab">
+    <input type="radio" id="tab14" name="menu-tab">
+    <input type="radio" id="tab15" name="menu-tab">
+    {% endif %}
+
+    <div class="menu-layout">
+
+        <div class="tabs-sidebar">
+            {% if categories %}
+                {% for category in categories %}
+                <label for="tab{{ forloop.counter }}" class="tab-label label{{ forloop.counter }}">{{ category.icon }} {{ category.name }}</label>
+                {% endfor %}
+            {% else %}
+            <label for="tab1" class="tab-label label1">Выпечки</label>
+            <label for="tab2" class="tab-label label2">Блюда</label>
+            <label for="tab3" class="tab-label label3">Супы</label>
+            <label for="tab4" class="tab-label label4">Мангал</label>
+            <label for="tab5" class="tab-label label5">Ассорти</label>
+            <label for="tab6" class="tab-label label6">Заказные</label>
+            <label for="tab7" class="tab-label label7">Чаи</label>
+            <label for="tab8" class="tab-label label8">Напитки</label>
+            <label for="tab9" class="tab-label label9">Десерты</label>
+            <label for="tab10" class="tab-label label10">Пиццы</label>
+            <label for="tab11" class="tab-label label11">Роллы</label>
+            <label for="tab12" class="tab-label label12">Запеченные</label>
+            <label for="tab13" class="tab-label label13">Горячие (Роллы)</label>
+            <label for="tab14" class="tab-label label14">Салаты</label>
+            <label for="tab15" class="tab-label label15">Прочие</label>
+            {% endif %}
+        </div>
+
+        <div class="menu-content-area">
+            {% if categories %}
+                {% for category in categories %}
+                <div class="menu-content content{{ forloop.counter }}">
+                    {% for item in category.items.all %}
+                    <div class="dish-card">
+                        <div class="dish-img" style="background-image: url('{{ item.image.url }}');"></div>
+                        <div class="dish-info">
+                            <div class="dish-title">{{ item.name }}</div>
+                            <p>{{ item.description }}</p>
+                            <div class="special-bottom">
+                                <span class="special-price">{{ item.price }} сом</span>
+                                <button class="special-btn add-to-cart-btn"
+                                        data-name="{{ item.name }}"
+                                        data-price="{{ item.price }}"
+                                        data-img="{{ item.image.url }}">В корзину</button>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p style="color: var(--gold); padding: 20px;">В этой категории пока нет блюд.</p>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            {% else %}
+            <div class="menu-content content1">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content2">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content3">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content4">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content5">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content6">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content7">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content8">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content9">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content10">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content11">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content12">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content13">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content14">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content15">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="chef-special">
+        <a href="#" class="btn" style="margin-top: 30px;">Заказать сейчас</a>
+    </div>
+</section>
+
+
+<section class="week-specials">
+    <h2 class="specials-title"><span>❖</span> Блюда Недели <span>❖</span></h2>
+    <p class="specials-subtitle">Особый выбор нашего Шеф-повара</p>
+
+    <div class="specials-slider-wrapper">
+        <button class="slider-arrow prev-arrow">❮</button>
+
+        <div class="specials-grid" id="specialsGrid">
+            {% for item in week_specials %}
+            <div class="special-card">
+                <div class="special-img" style="background-image: url('{{ item.image.url }}');">
+                    {% if item.tag %}<div class="special-tag">{{ item.get_tag_display }}</div>{% endif %}
+                </div>
+                <div class="special-info">
+                    <h4>{{ item.name }}</h4>
+                    <p>{{ item.description|truncatechars:60 }}</p>
+                    <div class="special-bottom">
+                        <span class="special-price">{{ item.price }} сом</span>
+                        <button class="special-btn add-to-cart-btn"
+                                data-name="{{ item.name }}"
+                                data-price="{{ item.price }}"
+                                data-img="{{ item.image.url }}">В корзину</button>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="special-card">
+                <div class="special-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                    <div class="special-tag">ТОП ВКУС</div>
+                </div>
+                <div class="special-info">
+                    <h4>Ханский Плов</h4>
+                    <p>Рассыпчатый узгенский рис, желтая морковь и нежна...</p>
+                    <div class="special-bottom">
+                        <span class="special-price">850 сом</span>
+                        <button class="special-btn add-to-cart-btn"
+                                data-name="Ханский Плов"
+                                data-price="850"
+                                data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                            В корзину
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="special-card">
+                <div class="special-img" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                    <div class="special-tag">НА ОГНЕ</div>
+                </div>
+                <div class="special-info">
+                    <h4>Шашлык Казына</h4>
+                    <p>Сочные куски мяса, маринованные по...</p>
+                    <div class="special-bottom">
+                        <span class="special-price">600 сом</span>
+                        <button class="special-btn add-to-cart-btn"
+                                data-name="Шашлык &quot;Казына&quot;"
+                                data-price="600"
+                                data-img="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                            В корзину
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="special-card">
+                <div class="special-img" style="background-image: url('https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                    <div class="special-tag">НОВИНКА</div>
+                </div>
+                <div class="special-info">
+                    <h4>Сырне в казане</h4>
+                    <p>Томленое мясо барашка с овощами, тающее во рту.</p>
+                    <div class="special-bottom">
+                        <span class="special-price">1 200 сом</span>
+                        <button class="special-btn add-to-cart-btn"
+                                data-name="Сырне в казане"
+                                data-price="1200"
+                                data-img="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                            В корзину
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="special-card">
+                <div class="special-img" style="background-image: url('https://images.unsplash.com/photo-1544025162-8111149f12d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                    <div class="special-tag">К ЧАЮ</div>
+                </div>
+                <div class="special-info">
+                    <h4>Восточная Сказка</h4>
+                    <p>Ассорти из пахлавы, чак-чака и орехов с горным медом.</p>
+                    <div class="special-bottom">
+                        <span class="special-price">550 сом</span>
+                        <button class="special-btn add-to-cart-btn"
+                                data-name="Восточная Сказка"
+                                data-price="550"
+                                data-img="https://images.unsplash.com/photo-1544025162-8111149f12d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                            В корзину
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="special-card">
+                <div class="special-img" style="background-image: url('https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                    <div class="special-tag">СВЕЖЕЕ</div>
+                </div>
+                <div class="special-info">
+                    <h4>Салат "Кочевник"</h4>
+                    <p>Свежие овощи, отварная конина и фирменная...</p>
+                    <div class="special-bottom">
+                        <span class="special-price">400 сом</span>
+                        <button class="special-btn add-to-cart-btn"
+                                data-name="Салат &quot;Кочевник&quot;"
+                                data-price="400"
+                                data-img="https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                            В корзину
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <button class="slider-arrow next-arrow">❯</button>
+    </div>
+</section>
+
+
+<section class="atmosphere-gallery" id="atmosphere">
+    <h2 class="atmosphere-title">Атмосфера «Казына»</h2>
+    <p class="atmosphere-subtitle">Место, где время течет со вкусом</p>
+
+    {% if gallery %}
+    <div class="gallery-row">
+        <div class="gallery-track track-left">
+            {% for img in gallery %}
+            <div class="gallery-item"><img src="{{ img.image.url }}" alt="{{ img.alt }}"></div>
+            {% endfor %}
+            {% for img in gallery %}
+            <div class="gallery-item"><img src="{{ img.image.url }}" alt="{{ img.alt }}"></div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="gallery-row">
+        <div class="gallery-track track-right">
+            {% for img in gallery %}
+            <div class="gallery-item"><img src="{{ img.image.url }}" alt="{{ img.alt }}"></div>
+            {% endfor %}
+            {% for img in gallery %}
+            <div class="gallery-item"><img src="{{ img.image.url }}" alt="{{ img.alt }}"></div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <div class="gallery-row">
+        <div class="gallery-track track-left">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Интерьер"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Детали"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Еда"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Мясо"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Интерьер"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Детали"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Еда"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Мясо"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Интерьер"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Детали"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Еда"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Мясо"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Интерьер"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Детали"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Еда"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Мясо"></div>
+        </div>
+    </div>
+
+    <div class="gallery-row">
+        <div class="gallery-track track-right">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Блюдо"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Кабинка"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Повар"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Веранда"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Блюдо"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Кабинка"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Повар"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Веранда"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Блюдо"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Кабинка"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Повар"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Веранда"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Блюдо"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Кабинка"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Повар"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Веранда"></div>
+        </div>
+    </div>
+    {% endif %}
+</section>
+
+
+<section id="about" class="about-contact">
+    <div class="container">
+        <div class="about__content">
+            <div class="about__text">
+                <h2>Окунитесь в <br><span>нашу историю</span></h2>
+                <p>{{ site.about_text|default:"Ресторан «Казына» — это место, где переплетаются древние кочевые традиции и высокий уровень современного сервиса. Мы создали этот уголок для того, чтобы каждый гость мог почувствовать истинное кыргызское гостеприимство, насладиться вкусом блюд, приготовленных на живом огне." }}</p>
+
+                <ul class="contact-info-list">
+                    <li><span></span> <strong>Адрес:</strong> {{ site.address|default:"г. Бишкек, ул. Манаса, 12" }}</li>
+                    <li><span></span> <strong>Телефон:</strong> <a href="{{ site.phone_link|default:'tel:+996555123456' }}">{{ site.phone|default:"+996 555 123 456" }}</a></li>
+                    <li><span></span> <strong>Режим работы:</strong> {{ site.hours|default:"Ежедневно с 10:00 до 00:00" }}</li>
+                </ul>
+
+                <a href="#" class="btn" style="margin-top: 15px;">Проложить маршрут</a>
+            </div>
+
+            <div class="map-wrapper-side">
+                <div class="map-frame">
+                    <div class="corner top-left"></div>
+                    <div class="corner top-right"></div>
+                    <div class="corner bottom-left"></div>
+                    <div class="corner bottom-right"></div>
+
+                    <div class="map-inner">
+                        {% if site.map_embed %}
+                            {{ site.map_embed|safe }}
+                        {% else %}
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1051.6236401331269!2d72.98090583435759!3d40.935904079116106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2skg!4v1768659051227!5m2!1sru!2skg"
+                            width="100%" height="100%" style="border:0;"
+                            allowfullscreen="" loading="lazy">
+                        </iframe>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="cart-overlay" id="cartOverlay">
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Ваш заказ</h2>
+            <div style="display:flex; gap:10px; align-items:center;">
+                <button id="clearCartBtn" style="background:none; border:1px solid var(--gold); color:var(--gold); padding:4px 10px; cursor:pointer; font-size:12px; border-radius:3px;">Очистить</button>
+                <button id="cartCloseBtn" style="background:none; border:none; color:var(--cream); font-size:22px; cursor:pointer; line-height:1;">✕</button>
+            </div>
+        </div>
+
+        <div class="cart-items" id="cartItemsContainer">
+            <p class="empty-cart-msg">Ваша корзина пуста</p>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total">Итого: <span id="cartTotalSum">0</span> сом</div>
+            <button class="checkout-btn" id="checkoutBtn">Заказать (WhatsApp)</button>
+        </div>
+    </div>
+</div>
+
+
+<footer class="main-footer" id="contacts">
+    <div class="footer-container">
+
+        <div class="footer-col about-col">
+            <a href="#" class="footer-logo">КАЗЫНА</a>
+            <p>Ресторан истинного кыргызского гостеприимства. Вкус, который объединяет поколения, а атмосфера переносит в эпоху великих кочевников.</p>
+            <div class="social-links">
+                <a href="{{ site.instagram_url|default:'#' }}" title="Instagram">IG</a>
+                <a href="{{ site.facebook_url|default:'#' }}" title="Facebook">FB</a>
+                <a href="https://wa.me/{{ site.whatsapp|default:'996555123456' }}" title="WhatsApp">WA</a>
+            </div>
+        </div>
+
+        <div class="footer-col links-col">
+            <h3>Навигация</h3>
+            <ul>
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#menu">Меню</a></li>
+                <li><a href="#atmosphere">Атмосфера</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col contacts-col">
+            <h3>Контакты</h3>
+            <p><span></span> {{ site.address|default:"г. Бишкек, ул. Манаса, 12" }}</p>
+            <p><span></span> <a href="{{ site.phone_link|default:'tel:+996555123456' }}" style="color:inherit; text-decoration:none;">{{ site.phone|default:"+996 555 123 456" }}</a></p>
+            <p><span></span> {{ site.hours|default:"Ежедневно: 10:00 - 00:00" }}</p>
+        </div>
+
+        <div class="footer-col qr-col">
+            <h3>Меню в телефоне</h3>
+            <a href="{% url 'qr_menu' %}" class="qr-wrapper">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=012217&bgcolor=F5F5DC&data=https://yourwebsite.com/qr-menu" alt="QR Меню" class="qr-code">
+                <span class="qr-mobile-text">МЕНЮ</span>
+            </a>
+            <p class="qr-text">Наведите камеру или<br>нажмите на qr</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Ресторан «Казына». Все права защищены. Developet by : Kadyrov.A</p>
+    </div>
+</footer>
+
+<script>
+        // Находим наш скрытый чекбокс, который управляет меню
+        const menuToggle = document.getElementById('menu-toggle');
+
+        // Находим все ссылки внутри мобильного меню
+        const mobileLinks = document.querySelectorAll('.mobile-nav a');
+
+        // 1. Закрываем меню при скролле страницы
+        window.addEventListener('scroll', () => {
+            if (menuToggle.checked) {
+                menuToggle.checked = false;
+            }
+        });
+
+        // 2. Закрываем меню при клике на любую ссылку внутри него
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.checked = false;
+            });
+        });
+</script>
+
+
+<script>
+    // Находим все обертки слайдеров на странице
+    const allSliders = document.querySelectorAll('.specials-slider-wrapper');
+
+    // Проходимся по каждому слайдеру отдельно
+    allSliders.forEach(slider => {
+        // Ищем сетку и кнопки ТОЛЬКО внутри текущего слайдера
+        const grid = slider.querySelector('.specials-grid');
+        const btnPrev = slider.querySelector('.prev-arrow');
+        const btnNext = slider.querySelector('.next-arrow');
+
+        const step = 330; // Шаг прокрутки
+
+        // Если кнопки и сетка найдены, вешаем на них клики
+        if (btnPrev && btnNext && grid) {
+            btnPrev.addEventListener('click', () => {
+                grid.scrollLeft -= step;
+            });
+
+            btnNext.addEventListener('click', () => {
+                grid.scrollLeft += step;
+            });
+        }
+    });
+</script>
+
+
+<script>
+    // Логика для Главного Баннера (Hero Slider)
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dots .dot');
+    const heroPrev = document.querySelector('.hero-prev');
+    const heroNext = document.querySelector('.hero-next');
+    let currentSlide = 0;
+    let slideInterval;
+
+    function showSlide(index) {
+        // Убираем активный класс у всех
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        // Закольцовываем (если дошли до конца — идем в начало)
+        if (index >= slides.length) currentSlide = 0;
+        else if (index < 0) currentSlide = slides.length - 1;
+        else currentSlide = index;
+
+        // Показываем нужный слайд
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+
+    // Автопрокрутка каждые 5 секунд
+    function startSlideShow() {
+        slideInterval = setInterval(nextSlide, 5000);
+    }
+
+    // Сброс таймера при ручном клике (чтобы не перескочило сразу)
+    function resetInterval() {
+        clearInterval(slideInterval);
+        startSlideShow();
+    }
+
+    heroNext.addEventListener('click', () => { nextSlide(); resetInterval(); });
+    heroPrev.addEventListener('click', () => { prevSlide(); resetInterval(); });
+
+    // Клики по точкам
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+            resetInterval();
+        });
+    });
+
+    // Запускаем магию!
+    startSlideShow();
+</script>
+
+
+<script>
+   // === ЛОГИКА КОРЗИНЫ (С ГРУППИРОВКОЙ) ===
+    const cartOverlay = document.getElementById('cartOverlay');
+    const cartOpenBtn = document.getElementById('cartOpenBtn');
+    const cartCloseBtn = document.getElementById('cartCloseBtn');
+    const clearCartBtn = document.getElementById('clearCartBtn');
+    const cartItemsContainer = document.getElementById('cartItemsContainer');
+    const cartBadge = document.getElementById('cartBadge');
+    const cartTotalSum = document.getElementById('cartTotalSum');
+
+    let cart = []; // Массив для блюд
+
+    // Открытие/Закрытие корзины
+    cartOpenBtn.addEventListener('click', () => cartOverlay.classList.add('active'));
+    cartCloseBtn.addEventListener('click', () => cartOverlay.classList.remove('active'));
+    cartOverlay.addEventListener('click', (e) => {
+        if(e.target === cartOverlay) cartOverlay.classList.remove('active');
+    });
+
+    // Функция обновления визуала
+    function updateCartUI() {
+        cartItemsContainer.innerHTML = '';
+        let total = 0;
+        let totalItems = 0; // Считаем общее количество блюд для счетчика в шапке
+
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p class="empty-cart-msg">Ваша корзина пуста</p>';
+        } else {
+            cart.forEach((item, index) => {
+                const itemSum = item.price * item.quantity; // Считаем сумму за позицию
+                total += itemSum;
+                totalItems += item.quantity;
+
+                const itemHTML = `
+                    <div class="cart-item">
+                        <img src="${item.img}" class="cart-item-img" alt="food">
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-price">${item.price} сом / шт</div>
+
+                            <div class="cart-item-qty">
+                                <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
+                                <span class="qty-num">${item.quantity}</span>
+                                <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
+                            </div>
+                        </div>
+
+                        <div style="display:flex; flex-direction:column; align-items:flex-end; gap: 10px;">
+                            <button class="remove-item" onclick="removeFromCart(${index})">✖</button>
+                            <div style="color:var(--gold); font-weight:bold;">${itemSum}</div>
+                        </div>
+                    </div>
+                `;
+                cartItemsContainer.insertAdjacentHTML('beforeend', itemHTML);
+            });
+        }
+
+        cartBadge.innerText = totalItems;
+        cartTotalSum.innerText = total;
+    }
+
+    // Изменение количества блюда (+ или -)
+    window.changeQty = function(index, delta) {
+        cart[index].quantity += delta;
+        if (cart[index].quantity <= 0) {
+            cart.splice(index, 1); // Удаляем, если счетчик дошел до 0
+        }
+        updateCartUI();
+    };
+
+    // Очистка всей корзины
+    clearCartBtn.addEventListener('click', () => {
+        if(cart.length > 0 && confirm('Очистить корзину полностью?')) {
+            cart = [];
+            updateCartUI();
+        }
+    });
+
+    // Добавление в корзину (с проверкой дубликатов)
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const name = this.getAttribute('data-name');
+            const price = parseInt(this.getAttribute('data-price'));
+            const img = this.getAttribute('data-img');
+
+            // Проверяем, есть ли уже это блюдо
+            const existingItem = cart.find(item => item.name === name);
+
+            if (existingItem) {
+                existingItem.quantity += 1; // Если есть, просто увеличиваем количество
+            } else {
+                cart.push({ name, price, img, quantity: 1 }); // Иначе добавляем новое
+            }
+
+            updateCartUI();
+
+            const originalText = this.innerText;
+            this.innerText = "Добавлено ✓";
+            setTimeout(() => this.innerText = originalText, 1500);
+        });
+    });
+
+    // Удаление конкретной позиции (крестик)
+    window.removeFromCart = function(index) {
+        cart.splice(index, 1);
+        updateCartUI();
+    };
+
+    // === ОТПРАВКА ЗАКАЗА В WHATSAPP ===
+    document.getElementById('checkoutBtn').addEventListener('click', () => {
+        if (cart.length === 0) {
+            alert('Ваша корзина пуста! Добавьте блюда, чтобы сделать заказ.');
+            return;
+        }
+
+        let message = "Здравствуйте! ⚜️ Хочу сделать заказ в ресторане «Казына»:\n\n";
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            const sum = item.price * item.quantity;
+            message += `${index + 1}. ${item.name} (x${item.quantity}) — ${sum} сом\n`;
+            total += sum;
+        });
+
+        message += `\n*Итого к оплате: ${total} сом*\n\nЖду подтверждения заказа!`;
+
+        const phone = "{{ site.whatsapp|default:'996555123456' }}";
+        const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+    });
+</script>
+
+
+</body>
+</html>

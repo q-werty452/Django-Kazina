@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Меню — Казына</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚜️</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+
+<div class="preloader">
+    <div class="tunduk">
+        <div class="cross"></div>
+        <div class="cross"></div>
+    </div>
+</div>
+
+<div class="floating-patterns">
+    <div class="pattern">♨</div>
+    <div class="pattern">❖</div>
+    <div class="pattern">✤</div>
+    <div class="pattern">❂</div>
+    <div class="pattern">✥</div>
+</div>
+
+<header class="main-header">
+    <a href="/" class="logo">КАЗЫНА</a>
+
+    <nav class="desktop-menu">
+        <a href="/#home">Главная</a>
+        <a href="/#about">О нас</a>
+        <a href="/#menu">Меню</a>
+        <a href="/#atmosphere">Атмосфера</a>
+        <a href="/#contacts">Контакты</a>
+        <a href="{{ site.instagram_url|default:'https://www.instagram.com/kazyna_manas?igsh=MWE5bHZtOWJ4Y3FsYg%3D%3D' }}">Инстаграм</a>
+    </nav>
+
+    <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+
+    <div class="header-right-section">
+
+        <div class="desktop-contacts">
+            <span class="phone">{{ site.phone|default:"+996 555 123 456" }}</span>
+            <span class="lang">KG | RU | EN</span>
+        </div>
+
+        <div class="header-controls">
+            <div class="header-actions">
+                <button class="cart-toggle-btn" id="cartOpenBtn">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+            </div>
+
+            <label for="menu-toggle" class="hamburger">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </label>
+        </div>
+
+    </div>
+
+    <div class="mobile-overlay">
+        <nav class="mobile-nav">
+            <a href="/#home">Главная</a>
+            <a href="/#about">О нас</a>
+            <a href="/#menu">Меню</a>
+            <a href="/#atmosphere">Атмосфера</a>
+            <a href="/#contacts">Контакты</a>
+        </nav>
+        <div class="mobile-contacts">
+            <p>📞 {{ site.phone|default:"+996 555 123 456" }}</p>
+            <p class="mobile-lang">KG | RU | EN</p>
+        </div>
+    </div>
+</header>
+
+
+<section class="menu-section" id="menu">
+    <h2 class="specials-title"><span>❖</span> Наше меню<span>❖</span></h2>
+
+    {% if categories %}
+        {% for category in categories %}
+        <input type="radio" id="tab{{ forloop.counter }}" name="menu-tab" {% if forloop.first %}checked{% endif %}>
+        {% endfor %}
+    {% else %}
+    <input type="radio" id="tab1" name="menu-tab" checked>
+    <input type="radio" id="tab2" name="menu-tab">
+    <input type="radio" id="tab3" name="menu-tab">
+    <input type="radio" id="tab4" name="menu-tab">
+    <input type="radio" id="tab5" name="menu-tab">
+    <input type="radio" id="tab6" name="menu-tab">
+    <input type="radio" id="tab7" name="menu-tab">
+    <input type="radio" id="tab8" name="menu-tab">
+    <input type="radio" id="tab9" name="menu-tab">
+    <input type="radio" id="tab10" name="menu-tab">
+    <input type="radio" id="tab11" name="menu-tab">
+    <input type="radio" id="tab12" name="menu-tab">
+    <input type="radio" id="tab13" name="menu-tab">
+    <input type="radio" id="tab14" name="menu-tab">
+    <input type="radio" id="tab15" name="menu-tab">
+    {% endif %}
+
+    <div class="menu-layout">
+
+        <div class="tabs-sidebar">
+            {% if categories %}
+                {% for category in categories %}
+                <label for="tab{{ forloop.counter }}" class="tab-label label{{ forloop.counter }}">{{ category.icon }} {{ category.name }}</label>
+                {% endfor %}
+            {% else %}
+            <label for="tab1" class="tab-label label1">Выпечки</label>
+            <label for="tab2" class="tab-label label2">Блюда</label>
+            <label for="tab3" class="tab-label label3">Супы</label>
+            <label for="tab4" class="tab-label label4">Мангал</label>
+            <label for="tab5" class="tab-label label5">Ассорти</label>
+            <label for="tab6" class="tab-label label6">Заказные</label>
+            <label for="tab7" class="tab-label label7">Чаи</label>
+            <label for="tab8" class="tab-label label8">Напитки</label>
+            <label for="tab9" class="tab-label label9">Десерты</label>
+            <label for="tab10" class="tab-label label10">Пиццы</label>
+            <label for="tab11" class="tab-label label11">Роллы</label>
+            <label for="tab12" class="tab-label label12">Запеченные</label>
+            <label for="tab13" class="tab-label label13">Горячие (Роллы)</label>
+            <label for="tab14" class="tab-label label14">Салаты</label>
+            <label for="tab15" class="tab-label label15">Прочие</label>
+            {% endif %}
+        </div>
+
+        <div class="menu-content-area">
+            {% if categories %}
+                {% for category in categories %}
+                <div class="menu-content content{{ forloop.counter }}">
+                    {% for item in category.items.all %}
+                    <div class="dish-card">
+                        <div class="dish-img" style="background-image: url('{{ item.image.url }}');"></div>
+                        <div class="dish-info">
+                            <div class="dish-title">{{ item.name }}</div>
+                            <p>{{ item.description }}</p>
+                            <div class="special-bottom">
+                                <span class="special-price">{{ item.price }} сом</span>
+                                <button class="special-btn add-to-cart-btn"
+                                        data-name="{{ item.name }}"
+                                        data-price="{{ item.price }}"
+                                        data-img="{{ item.image.url }}">В корзину</button>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p style="color: var(--gold); padding: 20px;">В этой категории пока нет блюд.</p>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            {% else %}
+            <div class="menu-content content1">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content2">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content3">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content4">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content5">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content6">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content7">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content8">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content9">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content10">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content11">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content12">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content13">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content14">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-content content15">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn"
+                                    data-name="Закуска"
+                                    data-price="220"
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="chef-special">
+        <a href="/" class="btn" style="margin-top: 30px;">На главную</a>
+    </div>
+</section>
+
+
+<div class="cart-overlay" id="cartOverlay">
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Ваш заказ</h2>
+            <div style="display:flex; gap:10px; align-items:center;">
+                <button id="clearCartBtn" style="background:none; border:1px solid var(--gold); color:var(--gold); padding:4px 10px; cursor:pointer; font-size:12px; border-radius:3px;">Очистить</button>
+                <button id="cartCloseBtn" style="background:none; border:none; color:var(--cream); font-size:22px; cursor:pointer; line-height:1;">✕</button>
+            </div>
+        </div>
+
+        <div class="cart-items" id="cartItemsContainer">
+            <p class="empty-cart-msg">Ваша корзина пуста</p>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total">Итого: <span id="cartTotalSum">0</span> сом</div>
+            <button class="checkout-btn" id="checkoutBtn">Заказать (WhatsApp)</button>
+        </div>
+    </div>
+</div>
+
+
+<script>
+        // Находим наш скрытый чекбокс, который управляет меню
+        const menuToggle = document.getElementById('menu-toggle');
+
+        // Находим все ссылки внутри мобильного меню
+        const mobileLinks = document.querySelectorAll('.mobile-nav a');
+
+        // 1. Закрываем меню при скролле страницы
+        window.addEventListener('scroll', () => {
+            if (menuToggle.checked) {
+                menuToggle.checked = false;
+            }
+        });
+
+        // 2. Закрываем меню при клике на любую ссылку внутри него
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.checked = false;
+            });
+        });
+</script>
+
+
+<script>
+   // === ЛОГИКА КОРЗИНЫ (С ГРУППИРОВКОЙ) ===
+    const cartOverlay = document.getElementById('cartOverlay');
+    const cartOpenBtn = document.getElementById('cartOpenBtn');
+    const cartCloseBtn = document.getElementById('cartCloseBtn');
+    const clearCartBtn = document.getElementById('clearCartBtn');
+    const cartItemsContainer = document.getElementById('cartItemsContainer');
+    const cartBadge = document.getElementById('cartBadge');
+    const cartTotalSum = document.getElementById('cartTotalSum');
+
+    let cart = []; // Массив для блюд
+
+    // Открытие/Закрытие корзины
+    cartOpenBtn.addEventListener('click', () => cartOverlay.classList.add('active'));
+    cartCloseBtn.addEventListener('click', () => cartOverlay.classList.remove('active'));
+    cartOverlay.addEventListener('click', (e) => {
+        if(e.target === cartOverlay) cartOverlay.classList.remove('active');
+    });
+
+    // Функция обновления визуала
+    function updateCartUI() {
+        cartItemsContainer.innerHTML = '';
+        let total = 0;
+        let totalItems = 0; // Считаем общее количество блюд для счетчика в шапке
+
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p class="empty-cart-msg">Ваша корзина пуста</p>';
+        } else {
+            cart.forEach((item, index) => {
+                const itemSum = item.price * item.quantity; // Считаем сумму за позицию
+                total += itemSum;
+                totalItems += item.quantity;
+
+                const itemHTML = `
+                    <div class="cart-item">
+                        <img src="${item.img}" class="cart-item-img" alt="food">
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-price">${item.price} сом / шт</div>
+
+                            <div class="cart-item-qty">
+                                <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
+                                <span class="qty-num">${item.quantity}</span>
+                                <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
+                            </div>
+                        </div>
+
+                        <div style="display:flex; flex-direction:column; align-items:flex-end; gap: 10px;">
+                            <button class="remove-item" onclick="removeFromCart(${index})">✖</button>
+                            <div style="color:var(--gold); font-weight:bold;">${itemSum}</div>
+                        </div>
+                    </div>
+                `;
+                cartItemsContainer.insertAdjacentHTML('beforeend', itemHTML);
+            });
+        }
+
+        cartBadge.innerText = totalItems;
+        cartTotalSum.innerText = total;
+    }
+
+    // Изменение количества блюда (+ или -)
+    window.changeQty = function(index, delta) {
+        cart[index].quantity += delta;
+        if (cart[index].quantity <= 0) {
+            cart.splice(index, 1); // Удаляем, если счетчик дошел до 0
+        }
+        updateCartUI();
+    };
+
+    // Очистка всей корзины
+    clearCartBtn.addEventListener('click', () => {
+        if(cart.length > 0 && confirm('Очистить корзину полностью?')) {
+            cart = [];
+            updateCartUI();
+        }
+    });
+
+    // Добавление в корзину (с проверкой дубликатов)
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const name = this.getAttribute('data-name');
+            const price = parseInt(this.getAttribute('data-price'));
+            const img = this.getAttribute('data-img');
+
+            // Проверяем, есть ли уже это блюдо
+            const existingItem = cart.find(item => item.name === name);
+
+            if (existingItem) {
+                existingItem.quantity += 1; // Если есть, просто увеличиваем количество
+            } else {
+                cart.push({ name, price, img, quantity: 1 }); // Иначе добавляем новое
+            }
+
+            updateCartUI();
+
+            const originalText = this.innerText;
+            this.innerText = "Добавлено ✓";
+            setTimeout(() => this.innerText = originalText, 1500);
+        });
+    });
+
+    // Удаление конкретной позиции (крестик)
+    window.removeFromCart = function(index) {
+        cart.splice(index, 1);
+        updateCartUI();
+    };
+
+    // === ОТПРАВКА ЗАКАЗА В WHATSAPP ===
+    document.getElementById('checkoutBtn').addEventListener('click', () => {
+        if (cart.length === 0) {
+            alert('Ваша корзина пуста! Добавьте блюда, чтобы сделать заказ.');
+            return;
+        }
+
+        let message = "Здравствуйте! ⚜️ Хочу сделать заказ в ресторане «Казына»:\n\n";
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            const sum = item.price * item.quantity;
+            message += `${index + 1}. ${item.name} (x${item.quantity}) — ${sum} сом\n`;
+            total += sum;
+        });
+
+        message += `\n*Итого к оплате: ${total} сом*\n\nЖду подтверждения заказа!`;
+
+        const phone = "{{ site.whatsapp|default:'996555123456' }}";
+        const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+    });
+</script>
+
+
+</body>
+</html>
