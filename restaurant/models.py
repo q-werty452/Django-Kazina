@@ -49,7 +49,10 @@ class MenuItem(models.Model):
 class Hall(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название зала")
     description = models.TextField(verbose_name="Описание")
-    image = models.ImageField(upload_to='halls/', verbose_name="Фото зала")
+    image = models.ImageField(upload_to='halls/', verbose_name="Фото зала (карточка)")
+    bg_image = models.ImageField(upload_to='halls/bg/', blank=True, null=True,
+        verbose_name="Фото фона (при наведении)",
+        help_text="Широкоформатное фото для фона секции. Если не задано — используется фото карточки.")
     order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
 
     class Meta:
@@ -62,8 +65,11 @@ class Hall(models.Model):
 
 
 class GalleryImage(models.Model):
+    ROW_CHOICES = [('top', 'Верхняя строка'), ('bottom', 'Нижняя строка')]
+
     image = models.ImageField(upload_to='gallery/', verbose_name="Фото")
     alt = models.CharField(max_length=200, blank=True, verbose_name="Подпись")
+    row = models.CharField(max_length=10, choices=ROW_CHOICES, default='top', verbose_name="Строка галереи")
     order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
 
     class Meta:
@@ -103,6 +109,10 @@ class SiteSettings(models.Model):
     facebook_url = models.URLField(blank=True, verbose_name="Facebook")
     about_text = models.TextField(verbose_name="Текст «Философия Казыны»",
         default="Мы не просто готовим еду. Мы воссоздаем историю.")
+    hero_image = models.ImageField(upload_to='settings/', blank=True, null=True,
+        verbose_name="Фоновое фото (Hero-секция)")
+    about_image = models.ImageField(upload_to='settings/', blank=True, null=True,
+        verbose_name="Фото секции «Философия» (левый блок)")
     map_embed = models.TextField(blank=True, verbose_name="Ссылка Google Maps (src для iframe)",
         help_text="Вставьте только src из кода встраивания Google Maps")
 

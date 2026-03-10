@@ -305,7 +305,9 @@ body {
     align-items: center;
     text-align: center;
     padding: 0 20px;
-    background: linear-gradient(rgba(1, 34, 23, 0.7), rgba(1, 34, 23, 0.8)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     z-index: 1;
 }
 .hero h1 {
@@ -351,7 +353,8 @@ body {
 }
 .about-img {
     flex: 1;
-    background: url('https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80') center/cover;
+    background-size: cover;
+    background-position: center;
     clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
     transition: transform 0.5s ease;
 }
@@ -389,41 +392,42 @@ body {
     justify-content: center;
 }
 
-/* --- Видео-фон (Логика без изменений) --- */
-.halls-video-bg {
+/* --- Фото-фон залов --- */
+.halls-img-bg {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+    z-index: 1;
 }
 
-.bg-vid {
+.halls-bg-item {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    background-size: cover;
+    background-position: center;
     opacity: 0;
-    transition: opacity 0.8s ease-in-out;
+    transition: opacity 0.8s ease;
 }
 
-.vid-default {
-    opacity: 1;
-}
+/* По умолчанию показываем первый зал */
+.halls-bg-item-1 { opacity: 1; }
+
+/* При наведении на любой зал — гасим первый (дефолтный) */
+.halls-section:has(.hall-item:hover) .halls-bg-item-1 { opacity: 0; }
+
+/* При наведении на конкретный зал — показываем его фон */
+.halls-section:has(.hall-item-1:hover) .halls-bg-item-1 { opacity: 1; }
+.halls-section:has(.hall-item-2:hover) .halls-bg-item-2 { opacity: 1; }
+.halls-section:has(.hall-item-3:hover) .halls-bg-item-3 { opacity: 1; }
+.halls-section:has(.hall-item-4:hover) .halls-bg-item-4 { opacity: 1; }
+.halls-section:has(.hall-item-5:hover) .halls-bg-item-5 { opacity: 1; }
+.halls-section:has(.hall-item-6:hover) .halls-bg-item-6 { opacity: 1; }
 
 .vid-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.95) 100%);
-    z-index: 1;
+    z-index: 2;
 }
-
-/* --- МАГИЯ CSS СЕЛЕКТОРА :HAS() ДЛЯ ФОНА --- */
-.halls-section:has(.hall-item:hover) .vid-default { opacity: 0; }
-.halls-section:has(.hall-item-1:hover) .vid-hall { opacity: 1; }
-.halls-section:has(.hall-item-2:hover) .vid-vip { opacity: 1; }
-.halls-section:has(.hall-item-3:hover) .vid-veranda { opacity: 1; }
 
 /* --- Стили контента --- */
 .halls-content-wrapper {
@@ -1925,7 +1929,6 @@ input[type="radio"] { display: none; }
         transition-delay: 0.2s; /* Легкая задержка для красоты эффекта */
     }
 
-    /* Видео на мобильных оставляем только дефолтное для экономии трафика и батареи */
-    .bg-vid { display: none; }
-    .vid-default { display: block; opacity: 1; }
+    /* На мобильных показываем первый фон всегда */
+    .halls-bg-item-1 { opacity: 1 !important; }
 }

@@ -37,12 +37,20 @@ class MenuItemAdmin(ModelAdmin):
 class HallAdmin(ModelAdmin):
     list_display = ('name', 'order')
     list_editable = ('order',)
+    fieldsets = (
+        ('Основное', {
+            'fields': ('name', 'description', 'order'),
+        }),
+        ('Фотографии', {
+            'fields': ('image', 'bg_image'),
+        }),
+    )
 
 
 @admin.register(GalleryImage)
 class GalleryImageAdmin(ModelAdmin):
-    list_display = ('alt', 'order')
-    list_editable = ('order',)
+    list_display = ('alt', 'row', 'order')
+    list_editable = ('row', 'order')
 
 
 @admin.register(SliderSlide)
@@ -61,7 +69,7 @@ class SiteSettingsAdmin(ModelAdmin):
             'fields': ('instagram_url', 'facebook_url'),
         }),
         ('Контент', {
-            'fields': ('about_text', 'map_embed'),
+            'fields': ('about_text', 'hero_image', 'about_image', 'map_embed'),
         }),
     )
 

@@ -9,6 +9,8 @@ def get_common_context():
         'categories': categories,
         'halls': Hall.objects.all(),
         'gallery': GalleryImage.objects.all(),
+        'gallery_top': GalleryImage.objects.filter(row='top'),
+        'gallery_bottom': GalleryImage.objects.filter(row='bottom'),
         'slides': SliderSlide.objects.filter(is_active=True),
         'week_specials': MenuItem.objects.filter(is_week_special=True, is_active=True)[:8],
         'site': site,

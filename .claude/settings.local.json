@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python manage.py shell -c \"\nfrom restaurant.models import Hall, GalleryImage, SiteSettings, SliderSlide, Category, MenuItem\n\nprint\\('=== HALLS ==='\\)\nfor h in Hall.objects.all\\(\\):\n    print\\(f'{h.id}. {h.name} \\(order: {h.order}\\)'\\)\n\nprint\\('\\\\n=== GALLERY IMAGES ==='\\)\nfor g in GalleryImage.objects.all\\(\\):\n    print\\(f'{g.id}. {g.alt} \\(order: {g.order}\\)'\\)\n\nprint\\('\\\\n=== SLIDER SLIDES ==='\\)\nfor s in SliderSlide.objects.all\\(\\):\n    print\\(f'{s.id}. {s.title} \\(active: {s.is_active}, order: {s.order}\\)'\\)\n\nprint\\('\\\\n=== SITE SETTINGS ==='\\)\nss = SiteSettings.objects.first\\(\\)\nif ss:\n    print\\(f'Phone: {ss.phone}'\\)\n    print\\(f'Address: {ss.address}'\\)\n    print\\(f'Hours: {ss.hours}'\\)\n    print\\(f'Instagram: {ss.instagram_url}'\\)\n    print\\(f'About text preview: {ss.about_text[:100]}...'\\)\n\nprint\\('\\\\n=== CATEGORIES ==='\\)\nfor c in Category.objects.all\\(\\):\n    print\\(f'{c.id}. {c.name} \\({c.icon}\\) - Items: {c.items.count\\(\\)}'\\)\n\" 2>/dev/null || echo \"Database query failed\")",
+      "Bash(cd \"C:\\\\Users\\\\aka22\\\\Desktop\\\\Django-Kazina\" && python manage.py makemigrations && python manage.py migrate)",
+      "Bash(python manage.py makemigrations 2>&1)",
+      "Bash(py -3 manage.py makemigrations restaurant 2>&1)",
+      "Bash(py -3 manage.py migrate 2>&1)",
+      "Bash(py -3 manage.py check 2>&1)",
+      "Bash(py -3 manage.py makemigrations && py -3 manage.py migrate 2>&1)"
+    ]
+  }
+}
